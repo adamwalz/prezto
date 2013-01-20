@@ -107,6 +107,16 @@ done
 autoload -Uz edit-command-line
 zle -N edit-command-line
 
+if [[ "$OSTYPE" == darwin* ]] && (( $+commands[aquamacs] )); then
+  alias aq='aquamacs'
+fi
+
+if (( $+commands[emacsclient] )); then
+  function ec {
+    emacsclient -n -a emacs $1
+  }
+fi
+
 #
 # Functions
 #

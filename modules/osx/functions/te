@@ -1,0 +1,20 @@
+#
+# Open files in TextEdit.app
+#
+# Authors:
+#   Adam Walz <viperlight89@me.com>
+#
+
+function te {
+  local page
+  if (( $# > 0 )); then
+    for page in "$@"; do
+      open -a TextEdit "$@"
+    done
+  else
+    open -a TextEdit
+  fi
+}
+
+te "$@"
+

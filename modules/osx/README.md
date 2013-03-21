@@ -20,6 +20,7 @@ Functions
   - `pfd` prints the current _Finder_ directory.
   - `pfs` prints the current _Finder_ selection.
   - `tab` creates a new tab (works in both _Terminal_ and [_iTerm_][3]).
+  - `te` open files in _TextEdit_
 
 Authors
 -------
@@ -27,6 +28,7 @@ Authors
 *The authors of this module should be contacted via the [issue tracker][4].*
 
   - [Sorin Ionescu](https://github.com/sorin-ionescu)
+  - [Adam Walz](https://github.com/adamwalz)
 
 [1]: http://www.apple.com/macosx/
 [2]: http://bruji.com/bwana/

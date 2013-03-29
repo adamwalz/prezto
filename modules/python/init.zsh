@@ -31,7 +31,7 @@ if (( $+commands[virtualenvwrapper_lazy.sh] )); then
   export WORKON_HOME=$HOME/.virtualenvs
 
   # Disable the virtualenv prompt.
-  VIRTUAL_ENV_DISABLE_PROMPT=1
+  #VIRTUAL_ENV_DISABLE_PROMPT=1
 
   source "$commands[virtualenvwrapper_lazy.sh]"
 fi

@@ -28,6 +28,7 @@ if (( $+commands[$_pacman_frontend] )); then
     source "${0:h}/${_pacman_frontend}.zsh"
   fi
 else
+  _pacman_frontend='pacman'
   _pacman_sudo='sudo '
 fi
 
@@ -36,7 +37,7 @@ fi
 #
 
 # Pacman.
-alias pac= "${_pacman_frontend}"
+alias pac="${_pacman_frontend}"
 
 # Installs packages from repositories.
 alias paci="${_pacman_sudo}${_pacman_frontend} --sync"

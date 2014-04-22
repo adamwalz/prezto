@@ -42,6 +42,8 @@ if (( $+commands[virtualenvwrapper_lazy.sh] )); then
   source "$commands[virtualenvwrapper_lazy.sh]"
 fi
 
+export SCIKIT_LEARN_DATA="$HOME/.scikit_learn_data"
+
 #
 # Aliases
 #

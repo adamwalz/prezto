@@ -27,6 +27,15 @@ if [[ -s "$PROJECT_HOME/DevTools/bin/enreview" ]]; then
 fi
 
 #
+# Functions
+#
+
+function enmacfix {
+  integer build=$((`./build-scripts/build-number.sh | tail -n 1` + 1))
+  echo "Fixed in nightly build $build" | tee >(pbcopy)
+}
+
+#
 # Aliases
 #
 

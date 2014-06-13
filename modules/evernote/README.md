@@ -16,6 +16,11 @@ are run. Replace *Developer* with your projects directory.
 
     export MAC_HOME="$PROJECT_HOME/mac"
 
+Functions
+---------
+
+  - `enmacfix` when run in the mac repository, prints the current build version and copies it to the pasteboard.
+
 Aliases
 -------
 

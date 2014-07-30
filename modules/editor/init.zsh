@@ -209,6 +209,14 @@ function prepend-sudo {
 }
 zle -N prepend-sudo
 
+# Open markdown file in Marked.app
+function marked() {
+  if [[ -f $1 ]]; then
+    open -a "Marked 2.app" $1
+  else open -a "Marked 2.app"
+  fi
+}
+
 # Reset to default key bindings.
 bindkey -d
 

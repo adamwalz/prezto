@@ -1,0 +1,23 @@
+#
+# Restarts the Catalina server for the Evernote Web service
+#
+# Authors:
+#   Clint Burford <cburford@evernote.com>
+#   Adam Walz <awalz@evernote.com>
+#
+
+function restart_catalina {
+  pid=`lsof -i tcp:8080 | grep LISTEN | awk '{ print $2 }'`
+  if [ $pid ]; then
+    echo stopping
+    $(brew --prefix tomcat6)/bin/catalina.sh stop
+    while kill -0 $pid 2>/dev/null; do
+      echo waiting
+      sleep 1
+    done
+  fi
+  echo starting
+  $(brew --prefix tomcat6)/bin/catalina.sh jpda start
+}
+
+restart_catalina "$@"

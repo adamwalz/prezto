@@ -1,0 +1,17 @@
+#
+# Installs a single compiled class from the web project without
+# having to build the entire project and restart the server
+#
+# Authors:
+#   Clint Burford <cburford@evernote.com>
+#   Adam Walz <awalz@evernote.com>
+#
+
+function web_class_install {
+  file=`find $WEB_HOME/target/classes/ -name $1.class`
+  if [[ -f $file ]]; then
+    echo cp $file $TOMCAT_HOME/webapps/ROOT/WEB-INF/$file
+    cp $file $TOMCAT_HOME/webapps/ROOT/WEB-INF/classes/
+  fi
+  echo ok
+}

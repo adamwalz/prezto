@@ -15,9 +15,9 @@ if [[ -s "$HOME/.pyenv/bin/pyenv" ]]; then
 elif (( $+commands[pyenv] )); then
   eval "$(pyenv init -)"
 
-# anaconda python installer
-elif [[ -d "$HOME/.anaconda/bin" ]]; then
-  path=($HOME/.anaconda/bin $path)
+# anaconda python3 installer
+elif [[ -d "$HOME/.anaconda3/bin" ]]; then
+  path=($HOME/.anaconda3/bin $path)
 
 # Prepend PEP 370 per user site packages directory, which defaults to
 # ~/Library/Python on Mac OS X and ~/.local elsewhere, to PATH. The

@@ -12,7 +12,7 @@ export NOTESTORE_HOME="$EVERNOTE_PROJ_ROOT/notestore"
 export ANDROID_HOME="/usr/local/opt/android-sdk"
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-export TOMCAT_HOME="/usr/local/Cellar/tomcat6/6.0.41/libexec"
+export TOMCAT_HOME="/usr/local/Cellar/tomcat/8.0.9/libexec"
 
 
 # Add Android tools to path

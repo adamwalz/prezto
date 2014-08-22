@@ -1,0 +1,18 @@
+#
+# Starts mysql with the UserStore database
+#
+# Authors:
+#   Adam Walz <awalz@evernote.com>
+#
+
+function ustore {
+  if [[ -z "$PS1" && "$MYSQL_PASSWORD" = "" ]] ; then
+    echo "[WARNING] No MYSQL_PASSWORD env password set"
+    echo "[WARNING] usage: MYSQL_PASSWORD=\"mypassword\" $BASENAME"
+    PASSWORD_CMD=""
+  else
+    PASSWORD_CMD="--password=${MYSQL_PASSWORD}"
+  fi
+
+  mysql -uroot $PASSWORD_CMD userstore
+}

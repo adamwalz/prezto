@@ -70,8 +70,3 @@ alias cpnstore="cp $HOME/.m2/repository/com/evernote/notestore/0.1-SNAPSHOT/note
 
 # Grab any new schema changes
 alias enblast="$NOTESTORE_HOME/src/main/sql/blast-sql.sh"
-
-# To connect to the databases
-alias ustore="mysql -u root userstore"
-alias nstore="mysql -u root notestore"
-

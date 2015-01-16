@@ -8,7 +8,7 @@
 
 function web_install {
   pwd=$PWD
-  rm -rf $TOMCAT_HOME/webapps/ROOT/*
+  /bin/rm -rf $TOMCAT_HOME/webapps/ROOT/*
   cp $WEB_HOME/target/web.war $TOMCAT_HOME/webapps/ROOT/
   cd $TOMCAT_HOME/webapps/ROOT && jar xf web.war && cd $pwd
   cp $WEB_HOME/src/main/resources/ENConfig.local.properties $TOMCAT_HOME/webapps/ROOT/WEB-INF/classes/

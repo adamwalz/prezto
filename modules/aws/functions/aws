@@ -1,0 +1,16 @@
+#
+# AWS command line interface with default help
+#
+# Authors:
+#   Adam Walz <adam@adamwalz.net>
+#
+
+function aws {
+  if (( $+commands[aws] )); then
+    if [[ -z "$@" ]]; then
+      command aws help
+    else
+      command aws "$@"
+    fi
+  fi
+}

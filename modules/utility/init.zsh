@@ -59,6 +59,9 @@ alias pu='pushd'
 alias rm="${aliases[rm]:-rm} -i"
 alias type='type -a'
 
+# Define common spelling problems
+alias tocuh='touch'
+
 # ls
 if is-callable 'dircolors'; then
   # GNU Core Utilities

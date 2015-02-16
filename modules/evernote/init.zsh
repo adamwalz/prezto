@@ -12,7 +12,8 @@ export NOTESTORE_HOME="$EVERNOTE_PROJ_ROOT/notestore"
 export ANDROID_HOME="/usr/local/opt/android-sdk"
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-export TOMCAT_HOME="/usr/local/Cellar/tomcat/8.0.9/libexec"
+export TOMCAT_HOME="/usr/local/Cellar/tomcat/8.0.17/libexec"
+export JAVA_OPTS="-Xms512m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=2048m"
 
 
 # Add Android tools to path

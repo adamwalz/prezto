@@ -61,6 +61,7 @@ alias type='type -a'
 
 # Define common spelling problems
 alias tocuh='touch'
+alias vat='cat'
 
 # ls
 if is-callable 'dircolors'; then

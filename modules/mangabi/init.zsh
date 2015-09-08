@@ -7,6 +7,10 @@
 
 application="Mangabi"
 
+if [[ -d "$HOME/Developer/sdk/google-cloud-sdk/bin" ]]; then
+  path=($HOME/Developer/sdk/google-cloud-sdk/bin $path)
+fi
+
 #
 # Aliases
 #

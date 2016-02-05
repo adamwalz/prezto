@@ -1,0 +1,34 @@
+# vim: set filetype=zsh:
+
+# Starts mysql with the NoteStore database
+#
+# Authors:
+#   Adam Walz <awalz@evernote.com>
+#
+local frontlights='4,5,6'
+local midlights='7,8,9'
+local backlights='10,11,12'
+
+local colors=(aqua aliceblue antiquewhite black blue cyan darkblue darkcyan darkgreen darkturquoise deepskyblue green lime mediumblue mediumspringgreen navy springgreen teal midnightblue dodgerblue lightseagreen forestgreen seagreen darkslategray darkslategrey limegreen mediumseagreen turquoise royalblue steelblue darkslateblue mediumturquoise indigo darkolivegreen cadetblue cornflowerblue mediumaquamarine dimgray dimgrey slateblue olivedrab slategray slategrey lightslategray lightslategrey mediumslateblue lawngreen aquamarine chartreuse gray grey maroon olive purple lightskyblue skyblue blueviolet darkmagenta darkred saddlebrown darkseagreen lightgreen mediumpurple darkviolet palegreen darkorchid yellowgreen sienna brown darkgray darkgrey greenyellow lightblue paleturquoise lightsteelblue powderblue firebrick darkgoldenrod mediumorchid rosybrown darkkhaki silver mediumvioletred indianred peru chocolate tan lightgray lightgrey thistle goldenrod orchid palevioletred crimson gainsboro plum burlywood lightcyan lavender darksalmon palegoldenrod violet azure honeydew khaki lightcoral sandybrown beige mintcream wheat whitesmoke ghostwhite lightgoldenrodyellow linen salmon oldlace bisque blanchedalmond coral cornsilk darkorange deeppink floralwhite fuchsia gold hotpink ivory lavenderblush lemonchiffon lightpink lightsalmon lightyellow magenta mistyrose moccasin navajowhite orange orangered papayawhip peachpuff pink red seashell snow tomato white yellow rebeccapurple)
+
+if (( $+commands[hue] )); then
+  hue lights ${frontlights} on &>/dev/null
+  hue lights ${midlights} on &>/dev/null
+  hue lights ${backlights} on &>/dev/null
+  hue lights ${frontlights} clear &>/dev/null
+  hue lights ${midlights} clear &>/dev/null
+  hue lights ${backlights} clear &>/dev/null
+
+  while true; do
+    echo hue lights 4 ${colors[$RANDOM % $colors[(I)$colors[-1]]]}
+    hue lights 5 ${colors[$RANDOM % $colors[(I)$colors[-1]]]}
+    hue lights 6 ${colors[$RANDOM % $colors[(I)$colors[-1]]]}
+    hue lights 7 ${colors[$RANDOM % $colors[(I)$colors[-1]]]}
+    hue lights 8 ${colors[$RANDOM % $colors[(I)$colors[-1]]]}
+    hue lights 9 ${colors[$RANDOM % $colors[(I)$colors[-1]]]}
+    hue lights 10 ${colors[$RANDOM % $colors[(I)$colors[-1]]]}
+    hue lights 11 ${colors[$RANDOM % $colors[(I)$colors[-1]]]}
+    hue lights 12 ${colors[$RANDOM % $colors[(I)$colors[-1]]]}
+    sleep 0.4
+  done
+fi

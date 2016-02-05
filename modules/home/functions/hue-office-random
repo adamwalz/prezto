@@ -1,0 +1,28 @@
+# vim: set filetype=zsh:
+
+# Starts mysql with the NoteStore database
+#
+# Authors:
+#   Adam Walz <awalz@evernote.com>
+#
+local frontlights='4,5,6'
+local midlights='7,8,9'
+local backlights='10,11,12'
+
+if (( $+commands[hue] )); then
+  hue lights ${frontlights} on &>/dev/null
+  hue lights ${midlights} on &>/dev/null
+  hue lights ${backlights} on &>/dev/null
+  hue lights ${frontlights} clear &>/dev/null
+  hue lights ${midlights} clear &>/dev/null
+  hue lights ${backlights} clear &>/dev/null
+  hue lights 4 $(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 6 | head -n 1)
+  hue lights 5 $(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 6 | head -n 1)
+  hue lights 6 $(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 6 | head -n 1)
+  hue lights 7 $(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 6 | head -n 1)
+  hue lights 8 $(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 6 | head -n 1)
+  hue lights 9 $(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 6 | head -n 1)
+  hue lights 10 $(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 6 | head -n 1)
+  hue lights 11 $(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 6 | head -n 1)
+  hue lights 12 $(cat /dev/urandom | tr -dc 'a-f0-9' | fold -w 6 | head -n 1)
+fi

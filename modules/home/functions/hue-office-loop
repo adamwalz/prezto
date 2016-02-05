@@ -1,0 +1,19 @@
+# vim: set filetype=zsh:
+
+# Starts mysql with the NoteStore database
+#
+# Authors:
+#   Adam Walz <awalz@evernote.com>
+#
+local frontlights='4,5,6'
+local midlights='7,8,9'
+local backlights='10,11,12'
+
+if (( $+commands[hue] )); then
+  hue lights ${frontlights} on &>/dev/null
+  hue lights ${midlights} on &>/dev/null
+  hue lights ${backlights} on &>/dev/null
+  hue lights ${frontlights} colorloop &>/dev/null
+  hue lights ${midlights} colorloop &>/dev/null
+  hue lights ${backlights} colorloop &>/dev/null
+fi

@@ -13,3 +13,5 @@ if (( $+commands[docker-machine] )); then
   # slows down creating new windows
   [[ -z $TMUX ]] && eval "$(docker-machine env ${docker_machine_name})"
 fi
+
+alias fig="docker-compose"

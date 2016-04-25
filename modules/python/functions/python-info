@@ -18,4 +18,8 @@ if [[ -n "$VIRTUAL_ENV" ]]; then
   zstyle -s ':prezto:module:python:info:virtualenv' format 'virtualenv_format'
   zformat -f virtualenv_formatted "$virtualenv_format" "v:${VIRTUAL_ENV:t}"
   python_info[virtualenv]="$virtualenv_formatted"
+elif [[ -n "$CONDA_DEFAULT_ENV" ]]; then
+  zstyle -s ':prezto:module:python:info:virtualenv' format 'virtualenv_format'
+  zformat -f virtualenv_formatted "$virtualenv_format" "v:${CONDA_DEFAULT_ENV:t}"
+  python_info[virtualenv]="$virtualenv_formatted"
 fi

@@ -18,8 +18,10 @@ elif (( $+commands[pyenv] )); then
 # anaconda python installer
 elif [[ -d "$HOME/.anaconda3/bin" ]]; then
   path=($HOME/.anaconda3/bin $path)
+  $HOME/.anaconda3/bin/conda config --set changeps1 false
 elif [[ -d "$HOME/.anaconda/bin" ]]; then
   path=($HOME/.anaconda/bin $path)
+  $HOME/.anaconda/bin/conda config --set changeps1 false
 
 # Prepend PEP 370 per user site packages directory, which defaults to
 # ~/Library/Python on Mac OS X and ~/.local elsewhere, to PATH. The
@@ -46,7 +48,7 @@ if (( $+commands[virtualenvwrapper.sh] )); then
   export WORKON_HOME="$HOME/.virtualenvs"
 
   # Disable the virtualenv prompt.
-  #VIRTUAL_ENV_DISABLE_PROMPT=1
+  VIRTUAL_ENV_DISABLE_PROMPT=1
 
   source "$commands[virtualenvwrapper.sh]"
 fi

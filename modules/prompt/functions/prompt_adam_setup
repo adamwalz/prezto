@@ -88,6 +88,10 @@ function prompt_adam_precmd {
     python-info
   fi
 
+  # Get docker machine
+  if (( $+functions[docker-info] )); then
+    docker-info
+  fi
 
   # Define prompts.
   RPROMPT='${editor_info[overwrite]}%(?:: %F{1}⏎%f)${VIM:+" %B%F{6}V%f%b"}'
@@ -150,13 +154,17 @@ function prompt_adam_setup {
   # Set python virutalenv parameters
   zstyle ':prezto:module:python:info:virtualenv' format '%B%F{2}ⓔ %v%f%b '
 
+  # Set docker machine parameters
+  zstyle ':prezto:module:docker:info:dockermachine' format '%B%F{2}🐋  %d%f%b '
+
   # Define left-hand prompt
+  # $docker_info[dockermachine]               - docker machine name if used
   # $python_info[virtualenv]                  - python virtualenv name if used
   # ${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "} - username@hostname if ssh'd
   # %F{4}${_prompt_adam_pwd}                  - current working directory
   # %(!. %B%F{1}#%f%b.)                       - literal '#' if root user
   # ${editor_info[keymap]}                    - literal '❯❯❯'
-  PROMPT='$python_info[virtualenv]${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "}%F{4}${_prompt_adam_pwd}%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
+  PROMPT='$docker_info[dockermachine]$python_info[virtualenv]${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "}%F{4}${_prompt_adam_pwd}%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
 
   # Define right-hand prompt
   # See prompt_adam_git_info and prompt_adam_precmd

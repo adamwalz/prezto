@@ -15,6 +15,11 @@ if [[ -s "$HOME/.pyenv/bin/pyenv" ]]; then
 elif (( $+commands[pyenv] )); then
   eval "$(pyenv init -)"
 
+  if (($+commands[pyenv-virtualenv] )); then
+    eval "$(pyenv virtualenv-init -)"
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+  fi
+
 # anaconda python installer
 elif [[ -d "$HOME/.anaconda3/bin" ]]; then
   path=($HOME/.anaconda3/bin $path)
@@ -48,7 +53,7 @@ if (( $+commands[virtualenvwrapper.sh] )); then
   export WORKON_HOME="$HOME/.virtualenvs"
 
   # Disable the virtualenv prompt.
-  VIRTUAL_ENV_DISABLE_PROMPT=1
+  export VIRTUAL_ENV_DISABLE_PROMPT=1
 
   source "$commands[virtualenvwrapper.sh]"
 fi

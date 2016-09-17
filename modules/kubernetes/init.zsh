@@ -14,3 +14,6 @@ if [[ -d $HOME/Developer/sdk/kubernetes ]]; then
     source <($HOME/Developer/sdk/kubernetes/platforms/darwin/amd64/kubectl completion zsh)
   fi
 fi
+
+# Aliases
+alias kc=kubectl

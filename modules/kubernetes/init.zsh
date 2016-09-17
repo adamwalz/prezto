@@ -6,6 +6,9 @@
 #
 
 if [[ -d $HOME/Developer/sdk/kubernetes ]]; then
+  # kubectl is installable via homebrew as well if you don't need the full
+  # kubernetes download. However first check for the full kubernetes install
+  # to see if a specific version is installed. This one will take precedence.
   if [[ "$OSTYPE" == darwin* ]] && [[ -d $HOME/Developer/sdk/kubernetes/platforms/darwin/amd64 ]]; then
     path=("$HOME/Developer/sdk/kubernetes/platforms/darwin/amd64" $path)
     source <($HOME/Developer/sdk/kubernetes/platforms/darwin/amd64/kubectl completion zsh)

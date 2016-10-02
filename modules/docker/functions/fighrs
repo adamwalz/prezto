@@ -1,0 +1,14 @@
+#
+# Hard restart docker-compose services
+#
+# Authors:
+#   Adam Walz <adam@adamwalz.net>
+#
+
+function fighrs {
+  service=$1
+  docker-compose stop ${service} \
+  && yes | docker-compose rm ${service} \
+  && docker-compose build ${service} \
+  && docker-compose up -d ${service}
+}

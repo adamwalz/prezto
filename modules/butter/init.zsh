@@ -9,6 +9,6 @@
 # Aliases
 #
 
-alias kcbs='kubectl --namespace=butter-stage'
-alias kcbp='kubectl --namespace=butter-production'
-alias kcbo='kubectl --namespace=butter-ops'
+alias kcs='kubectl --context=stage'
+alias kcp='kubectl --context=prod'
+alias kco='kubectl --context=ops'

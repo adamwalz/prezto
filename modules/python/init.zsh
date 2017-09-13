@@ -141,6 +141,7 @@ if (( $#commands[(i)pip(|[23])] )); then
   unset cache_file pip_command
 fi
 
+export PIP_CONFIG_FILE="$HOME/.config/pip/pip.conf"
 export SCIKIT_LEARN_DATA="$HOME/.scikit_learn_data"
 
 #

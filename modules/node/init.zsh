@@ -8,10 +8,12 @@
 
 # Load manually installed NVM into the shell session.
 if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
-  source "$HOME/.nvm/nvm.sh"
+  export NVM_DIR="$HOME/.nvm"
+  source "$NVM_DIR/nvm.sh"
 
 # Load package manager installed NVM into the shell session.
 elif (( $+commands[brew] )) && [[ -d "$(brew --prefix nvm 2> /dev/null)" ]]; then
+  export NVM_DIR="$HOME/.nvm"
   source "$(brew --prefix nvm)/nvm.sh"
 
 # Load manually installed nodenv into the shell session.

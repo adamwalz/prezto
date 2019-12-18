@@ -21,6 +21,8 @@ if (( $+commands[brew] )); then
   eval "${(@M)${(f)"$(brew shellenv 2> /dev/null)"}:#export HOMEBREW*}"
 fi
 
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 #
 # Aliases
 #

@@ -20,3 +20,4 @@ fi
 #
 
 alias c="cd $BOX_HOME/www/current_local"
+alias http_box="http --verify=no --cert /box/etc/pki/certs/test.crt --cert-key /box/etc/pki/certs/test.key"

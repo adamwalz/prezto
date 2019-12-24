@@ -6,11 +6,10 @@
 
 export GOPATH="$HOME/.golang"
 
-path=(
-  $path
-  /usr/local/opt/go/libexec/bin
-  $GOPATH/bin
-)
+if (( $+commands[goenv] )); then
+  export GOENV_ROOT=$(goenv root)
+  eval "$(goenv init -)"
+fi
 
 alias gob='go build'
 alias goc='go clean'

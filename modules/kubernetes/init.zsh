@@ -17,4 +17,5 @@ fi
 
 # Aliases
 alias kc=kubectl
+alias kccontext='kubectl config current-context'
 alias kcimages="kubectl get pods -o jsonpath='{range .items[*]}{.metadata.name} ({.status.phase}){\"\\n\"}{.spec.containers[*].image}{\"\\n\\n\"}{end}'"

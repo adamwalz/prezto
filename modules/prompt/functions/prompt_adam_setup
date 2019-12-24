@@ -91,11 +91,16 @@ function prompt_adam_precmd {
   # Format PWD.
   _prompt_adam_pwd=$(prompt-pwd)
 
+  # Get docker machine
+  if (( $+functions[docker-info] )); then
+    docker-info
+  fi
+
   # Handle updating git data. We also clear the git prompt data if we're in a
   # different git root now.
   if (( $+functions[git-dir] )); then
     local new_git_root="$(git-dir 2> /dev/null)"
-    if [[ $new_git_root != $_sorin_cur_git_root ]]; then
+    if [[ $new_git_root != $_adam_cur_git_root ]]; then
       _prompt_adam_git=''
       _adam_cur_git_root=$new_git_root
     fi
@@ -103,6 +108,9 @@ function prompt_adam_precmd {
 
   # Run python info (this should be fast and not require any async)
   if (( $+functions[python-info] )); then
+# Set docker machine parameters
+  zstyle ':prezto:module:docker:info:dockermachine' format '%B%F{2}🐋  %d%f%b '
+
     python-info
   fi
 
@@ -113,8 +121,6 @@ function prompt_adam_setup {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
   prompt_opts=(cr percent sp subst)
-  _prompt_adam_precmd_async_pid=0
-  _prompt_adam_precmd_async_data=$(mktemp "${TMPDIR:-/tmp}/adam-prompt-async-XXXXXXXXXX")
 
   # Load required functions.
   autoload -Uz add-zsh-hook
@@ -122,6 +128,16 @@ function prompt_adam_setup {
 
   # Add hook for calling git-info before each command.
   add-zsh-hook precmd prompt_adam_precmd
+
+  # Tell prezto we can manage this prompt
+  zstyle ':prezto:module:prompt' managed 'yes'
+
+  # Formats:
+  #   %b - branchname
+  #   %c - current path
+  #   %m - hostname
+  #   %n - username
+  #
 
   # Set editor-info parameters.
   zstyle ':prezto:module:editor:info:completing' format '%B%F{7}...%f%b'
@@ -147,26 +163,43 @@ function prompt_adam_setup {
   zstyle ':prezto:module:git:info:keys' format \
     'status' '%b %p %c:%s%A%B%S%a%d%m%r%U%u'
 
+  # Set python-info parameters.
+  zstyle ':prezto:module:python:info:virtualenv' format '%f%F{3}(%v)%F{7} '
+
+  # Set docker machine parameters
+  zstyle ':prezto:module:docker:info:dockermachine' format '%B%F{2}🐋  %d%f%b '
+
   # Set up non-zero return value display
   local show_return="✘ "
   # Default is to show the return value
   if zstyle -T ':prezto:module:prompt' show-return-val; then
     show_return+='%? '
   fi
-  # Set python-info format
-  zstyle ':prezto:module:python:info:virtualenv' format '%f%F{3}(%v)%F{7} '
 
-  # Get the async worker set up
+  # Get the async worker set up.
   _adam_cur_git_root=''
 
   _prompt_adam_git=''
   _prompt_adam_pwd=''
 
-  # Define prompts.
+  # Define left-hand prompt
+  # ${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "} - username@hostname if ssh'd
+  # %F{4}${_prompt_adam_pwd}                  - current working directory
+  # %(!. %B%F{1}#%f%b.)                       - literal '#' if root user
+  # ${editor_info[keymap]}                    - literal '❯❯❯'
   PROMPT='${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "}%F{4}${_prompt_adam_pwd}%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
-  RPROMPT='$python_info[virtualenv]${editor_info[overwrite]}%(?:: %F{1}'
+
+  # Define right-hand prompt
+  # See prompt_adam_git_info and prompt_adam_precmd
+  # $docker_info[dockermachine]               - docker machine name if used
+  # $python_info[virtualenv]                  - python virtualenv name if used
+  RPROMPT='$docker_info[dockermachine]$python_info[virtualenv]${editor_info[overwrite]}%(?:: %F{1}'
   RPROMPT+=${show_return}
   RPROMPT+='%f)${VIM:+" %B%F{6}V%f%b"}${_prompt_adam_git}'
+
+  # Define propmpt used for spelling correction
+  # $R spelling error
+  # %r spelling correction
   SPROMPT='zsh: correct %F{1}%R%f to %F{2}%r%f [nyae]? '
 }
 
@@ -180,3 +213,4 @@ function prompt_adam_preview {
 }
 
 prompt_adam_setup "$@"
+# vim: ft=zsh

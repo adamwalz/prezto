@@ -32,6 +32,12 @@ if (( $+commands[brew] )); then
 
   source "$cache_file"
   unset cache_file
+
+  if [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/brewfile/Brewfile" ]]; then
+    export HOMEBREW_BUNDLE_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/brewfile/Brewfile"
+  else
+    export HOMEBREW_BUNDLE_FILE="$HOME/.Brewfile"
+  fi
 fi
 
 #

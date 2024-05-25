@@ -76,7 +76,18 @@ if zstyle -T ':prezto:module:utility' safe-ops; then
 fi
 
 # ls
-if [[ ${(@M)${(f)"$(ls --version 2>&1)"}:#*(GNU|lsd) *} ]]; then
+if (( $+commands[eza] )); then
+  alias ls="eza --git --icons=always"
+
+   if zstyle -T ':prezto:module:utility:ls' dirs-first; then
+    alias ls="${aliases[ls]:-ls} --group-directories-first"
+  fi
+
+  if zstyle -t ':prezto:module:utility:ls' color; then
+    alias ls="${aliases[ls]:-ls} --color=always"
+  fi
+
+elif [[ ${(@M)${(f)"$(ls --version 2>&1)"}:#*(GNU|lsd) *} ]]; then
   # GNU Core Utilities
 
   if zstyle -T ':prezto:module:utility:ls' dirs-first; then

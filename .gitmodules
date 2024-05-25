@@ -1,3 +1,6 @@
+[submodule "modules/alias-tips/external"]
+	path = modules/alias-tips/external
+	url = https://github.com/djui/alias-tips.git
 [submodule "modules/autosuggestions/external"]
 	path = modules/autosuggestions/external
 	url = https://github.com/zsh-users/zsh-autosuggestions.git

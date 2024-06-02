@@ -1,0 +1,27 @@
+#
+# Displays the main Git branch.
+#
+# Authors:
+#   Adam Walz <adam@adamwalz.net>
+#
+
+# function git-branch-main {
+
+if ! command git rev-parse --git-dir &>/dev/null; then
+  print "$0: not a repository: $PWD" >&2
+  return 1
+fi
+
+local ref
+for ref in refs/{heads,remotes/{origin,upstream}}/{main,master}; do
+  if command git show-ref -q --verify "$ref"; then
+    print "${ref##*/}"
+    return 0
+  fi
+done
+
+# If no main branch was found, fall back to masin but return error
+print "main"
+return 1
+
+# }

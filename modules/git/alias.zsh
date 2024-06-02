@@ -58,6 +58,7 @@ if ! zstyle -t ':prezto:module:git:alias' skip; then
   alias gcam='git commit --all --message'
   alias gco='git checkout'
   alias gcO='git checkout --patch'
+  alias gcom='git checkout $(git-branch-main)'
   alias gcf='git commit --amend --reuse-message HEAD'
   alias gcfS='git commit --amend --reuse-message HEAD --gpg-sign'
   alias gcF='git commit --verbose --amend'
